@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.rshb.intech.steps.MainSteps;
 
 public class RshbPage extends BasePage {
 
@@ -14,16 +15,16 @@ public class RshbPage extends BasePage {
 
     public RshbPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
-        this.driver = driver;
+
     }
 
     public iBankPage clickIBankButton(){
         ibankButton.click();
-        return new iBankPage(driver);
+        return new iBankPage(MainSteps.getDriver());
     }
 
     public void waitPageLoaded(){
-        new WebDriverWait(driver, LOAD_TIMEOUT).until(ExpectedConditions.visibilityOf(ibankButton));
+        new WebDriverWait(MainSteps.getDriver(), LOAD_TIMEOUT).until(ExpectedConditions.visibilityOf(ibankButton));
     }
 
 }
